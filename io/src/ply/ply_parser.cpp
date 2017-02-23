@@ -171,17 +171,7 @@ bool pcl::io::ply::ply_parser::parse (const std::string& filename)
         std::size_t count;
         char space_element_name, space_name_count;
         stringstream >> space_element_name >> std::ws >> name >> space_name_count >> std::ws >> count;
-        if (!stringstream || 
-            !stringstream.eof () || 
-            !isspace (space_element_name) || 
-            !isspace (space_name_count))
-        {
-          if (error_callback_)
-          {
-            error_callback_ (line_number_, "parse error: invalid element statement");
-          }
-          return false;
-        }
+       
         std::vector< boost::shared_ptr<element> >::const_iterator iterator;
         for (iterator = elements.begin (); iterator != elements.end (); ++iterator)
         {
